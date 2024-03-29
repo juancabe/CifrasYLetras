@@ -92,24 +92,40 @@ function buscarPalabrasEnConsola(letrasInput) {
     });
 
     regexes.reverse();
-
+    
     function buscarPalabrasUnaPorUna(regexIndex) {
+        let palabrasLog = [];
         if (regexIndex < regexes.length) {
             let regex = regexes[regexIndex];
             let palabras = data.match(new RegExp(regex, "gm"));
             if (regex[regex.length - 3] < "4" && regex[regex.length - 4] === "{") {
                 // Si la longitud es menor que 4, pasar a la siguiente iteración sin buscar palabras
+                document.getElementById('buscarBtn').disabled = false;
                 return;
             }
+
             if (palabras) {
+                palabras.forEach(palabra => {
+                    if (!palabrasLog.includes(palabra)) {
+                        palabrasLog.push(palabra);
+                    } else { // Eliminar palabras duplicadas
+                        palabras.splice(palabras.indexOf(palabra), 1);
+                    }
+                }
+                );
+                palabrasLog = palabrasLog.concat(palabras);
                 palabras.forEach(palabra => {
                     mostrarPalabraEnConsola(palabra);
                 });
             }
-            // Llamar a la siguiente iteración de manera recursiva después de un breve retraso
             setTimeout(() => buscarPalabrasUnaPorUna(regexIndex + 1), 0);
+        } else {
+            // Activar el botón de búsqueda al finalizar la búsqueda
+            document.getElementById('buscarBtn').disabled = false;
+            document.getElementById('letrasInput').disabled = false;
         }
     }
 
     buscarPalabrasUnaPorUna(0); // Comenzar la búsqueda
+
 }

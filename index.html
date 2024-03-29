@@ -12,9 +12,8 @@
     <div class="container">
         <h1>Cifras y Letras</h1>
         <div class="form-container">
-            <p id="instrucciones">Introduce las letras:</p>
-            <input type="text" id="letrasInput">
-            <button onclick="buscarPalabras()">Buscar Palabras</button>
+            <input type="text" id="letrasInput" placeholder="Introduce las letras">
+            <button id="buscarBtn" onclick="buscarPalabras()">Buscar Palabras</button>
         </div>
 
         <div id="resultados"></div>
@@ -23,18 +22,32 @@
     <script src="./js/CifrasYLetras.js"></script>
     <script>
 
+        let resultadoCount = 0; // Variable global para el número de resultados
+
         function mostrarPalabraEnConsola(palabra) {
             // Mostrar la palabra dentro de un contenedor individual
             let resultadoDiv = document.createElement('div');
             resultadoDiv.textContent = palabra;
             document.getElementById('resultados').appendChild(resultadoDiv);
+
+            // Incrementar el número de resultados y actualizar el placeholder
+            resultadoCount++;
+            document.getElementById('letrasInput').placeholder = `Resultados: ${resultadoCount}`;
         }
 
         function buscarPalabras() {
             // Limpiar resultados anteriores
             document.getElementById('resultados').innerHTML = '';
+            document.getElementById('buscarBtn').disabled = true;   
+
+            // Reiniciar el número de resultados y el placeholder
+            resultadoCount = 0;
+            document.getElementById('letrasInput').placeholder = `Resultados: 0`;
+            
 
             let letrasInput = document.getElementById('letrasInput').value;
+            document.getElementById('letrasInput').value = "";
+            document.getElementById('letrasInput').disabled = true;
             buscarPalabrasEnConsola(letrasInput);
         }
         

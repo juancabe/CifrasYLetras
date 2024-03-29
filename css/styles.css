@@ -24,16 +24,6 @@ h1 {
     font-family: Arial, sans-serif; /* Familia de fuente */
 }
 
-/* Estilos para el párrafo */
-p {
-    font-size: 16px; /* Tamaño del texto */
-    margin-bottom: 20px; /* Margen inferior */
-    color: #333333f1; /* Color del texto */
-    font-family: Arial, sans-serif; /* Familia de fuente */
-    font-size: 17px; /* Tamaño del texto */
-}
-
-
 
 /* Estilos para el botón */
 button {
@@ -47,6 +37,10 @@ button {
     border-radius: 9px; /* Bordes redondeados */
     border: 2px solid rgba(0, 0, 0, 0.39); /* Borde negro */
     margin: 10px auto; /* Centrar horizontalmente */
+}
+
+button:disabled {
+    display: none
 }
 
 button:hover {
