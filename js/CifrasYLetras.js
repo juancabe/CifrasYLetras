@@ -93,8 +93,9 @@ function buscarPalabrasEnConsola(letrasInput) {
 
     regexes.reverse();
     
+    let palabrasLog = [];
+    
     function buscarPalabrasUnaPorUna(regexIndex) {
-        let palabrasLog = [];
         if (regexIndex < regexes.length) {
             let regex = regexes[regexIndex];
             let palabras = data.match(new RegExp(regex, "gm"));
