@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cifras y Letras</title>
+</head>
+<body>
+    <h1>Cifras y Letras</h1>
+    <p>Introduce las 9 letras:</p>
+    <input type="text" id="letrasInput">
+    <button onclick="buscarPalabras()">Buscar Palabras</button>
+
+    <script src="./js/CifrasYLetras.js"></script>
+
+    <script>
+        function mostrarPalabraEnConsola(palabra) {
+            console.log(palabra);
+            // Mostrar la palabra en algún lugar de la página si lo deseas
+            let resultadoDiv = document.createElement('div');
+            resultadoDiv.textContent = palabra;
+            document.body.appendChild(resultadoDiv);
+        }
+
+        function buscarPalabras() {
+            let letrasInput = document.getElementById('letrasInput').value;
+            buscarPalabrasEnConsola(letrasInput, mostrarPalabraEnConsola);
+        }
+    </script>
+</body>
+</html>
