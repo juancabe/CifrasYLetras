@@ -1,3 +1,4 @@
+// Función para generar todas las combinaciones de elementos de un array
 function combinations(arr, r) {
     const result = [];
     const helper = (currentIndex, currentCombination) => {
@@ -24,7 +25,6 @@ function generarCombinaciones(elementos) {
     return todasCombinaciones;
 }
 
-
 class Letra {
     constructor(letra, cantidad) {
         this.letra = letra;
@@ -39,59 +39,77 @@ class Letra {
     }
 }
 
-function buscarPalabrasEnConsola(letrasInput, callback) {
-    const filename = "palabras_no_acentos.txt";
 
-    fetch(filename)
+let data; // Variable para almacenar el contenido del archivo
+
+// Función para cargar el archivo y guardar su contenido en la variable data
+function cargarArchivo() {
+    const filename = "./js/palabras_no_acentos.txt"; // Nombre del archivo a cargar
+
+    return fetch(filename)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`Error al cargar el archivo ${filename}: ${response.status} ${response.statusText}`);
             }
             return response.text();
         })
-        .then(data => {
-            let listaLetrasUser = letrasInput.split('');
-
-            let todasCombinaciones = generarCombinaciones(listaLetrasUser);
-
-            let regexes = [];
-
-            todasCombinaciones.forEach(combinacion => {
-                let regex = "^";
-                let elementoVisitado = [];
-                combinacion.forEach(elemento => {
-                    if (combinacion.filter(el => el === elemento).length > 1) {
-                        if (!elementoVisitado.includes(elemento)) {
-                            regex += new Letra(elemento, combinacion.filter(el => el === elemento).length).getLookahead();
-                            elementoVisitado.push(elemento);
-                        }
-                    } else {
-                        regex += new Letra(elemento, 1).getLookahead();
-                    }
-                });
-                regex += `[a-z]{${combinacion.length}}$`;
-                regexes.push(regex);
-            });
-
-            regexes.reverse();
-
-            let palabrasRestantes = [];
-            regexes.forEach(regex => {
-                if (regex[regex.length - 3] < "4" && regex[regex.length - 4] === "{") {
-                    return;
-                }
-                let palabras = data.match(new RegExp(regex, "gm"));
-                if (palabras) {
-                    palabras.forEach(palabra => {
-                        if (!palabrasRestantes.includes(palabra)) {
-                            palabrasRestantes.push(palabra);
-                            callback(palabra);
-                        }
-                    });
-                }
-            });
+        .then(texto => {
+            data = texto; // Guardar el contenido del archivo en la variable data
         })
         .catch(error => {
             console.error(error);
         });
+}
+
+// Llamar a la función cargarArchivo una vez, cuando se carga la página
+cargarArchivo();
+
+function buscarPalabrasEnConsola(letrasInput) {
+    if (!data) {
+        console.error("El archivo aún no se ha cargado.");
+        return;
+    }
+
+    let listaLetrasUser = letrasInput.split('');
+    let todasCombinaciones = generarCombinaciones(listaLetrasUser);
+    let regexes = [];
+
+    todasCombinaciones.forEach(combinacion => {
+        let regex = "^";
+        let elementoVisitado = [];
+        combinacion.forEach(elemento => {
+            if (combinacion.filter(el => el === elemento).length > 1) {
+                if (!elementoVisitado.includes(elemento)) {
+                    regex += new Letra(elemento, combinacion.filter(el => el === elemento).length).getLookahead();
+                    elementoVisitado.push(elemento);
+                }
+            } else {
+                regex += new Letra(elemento, 1).getLookahead();
+            }
+        });
+        regex += `[a-z]{${combinacion.length}}$`;
+        regexes.push(regex);
+    });
+
+    regexes.reverse();
+
+    function buscarPalabrasUnaPorUna(regexIndex) {
+        if (regexIndex < regexes.length) {
+            let regex = regexes[regexIndex];
+            let palabras = data.match(new RegExp(regex, "gm"));
+            if (regex[regex.length - 3] < "4" && regex[regex.length - 4] === "{") {
+                // Si la longitud es menor que 4, pasar a la siguiente iteración sin buscar palabras
+                return;
+            }
+            if (palabras) {
+                palabras.forEach(palabra => {
+                    mostrarPalabraEnConsola(palabra);
+                });
+            }
+            // Llamar a la siguiente iteración de manera recursiva después de un breve retraso
+            setTimeout(() => buscarPalabrasUnaPorUna(regexIndex + 1), 0);
+        }
+    }
+
+    buscarPalabrasUnaPorUna(0); // Comenzar la búsqueda
 }

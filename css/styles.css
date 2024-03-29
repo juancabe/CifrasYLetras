@@ -1,0 +1,92 @@
+@keyframes slideIn {
+    from {
+      transform: translateY(10000%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+/* Estilos generales */
+body {
+    background-color: #a7e6ff; /* Cambia esto al color que prefieras */
+}
+
+/* Estilos para el contenedor principal */
+.container {
+    text-align: center; /* Centrar texto */
+    width: 100%; /* Ancho total */
+}
+
+/* Estilos para el título */
+h1 {
+    color: #333; /* Color del texto */
+    font-family: Arial, sans-serif; /* Familia de fuente */
+}
+
+/* Estilos para el párrafo */
+p {
+    font-size: 16px; /* Tamaño del texto */
+    margin-bottom: 20px; /* Margen inferior */
+}
+
+/* Estilos para el párrafo de instrucciones */
+#instrucciones {
+    font-size: 18px; /* Tamaño del texto */
+    font-weight: bold; /* Peso de la fuente */
+    font-family: Arial, sans-serif;
+}
+
+/* Estilos para el botón */
+button {
+    background-color: #0084ff; /* Color de fondo */
+    color: #000; /* Color del texto */
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    border: none; /* Sin borde */
+    padding: 7px 17px; /* Espaciado interno */
+    cursor: pointer; /* Cambio de cursor al pasar el ratón */
+    border-radius: 9px; /* Bordes redondeados */
+}
+
+button:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el ratón */
+}
+
+/* Estilos para la caja de texto de entrada */
+input[type="text"] {
+    padding: 10px; /* Espaciado interno */
+    border: 2px solid #ccc; /* Borde */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño del texto */
+    width: 200px; /* Ancho */
+    box-sizing: border-box; /* Incluir el borde y el padding en el ancho total */
+}
+
+/* Estilos cuando se enfoca la caja de texto */
+input[type="text"]:focus {
+    border-color: #007bff; /* Cambio de color del borde al enfocar */
+    outline: none; /* Eliminar el contorno al enfocar */
+}
+
+/* Estilos para el contenedor de resultados */
+#resultados {
+    margin-top: 20px; /* Margen superior */
+    text-align: center; /* Centrar texto */
+}
+
+
+/* Estilos para los resultados */
+#resultados div {
+    background-color: #f4f4f4; /* Color de fondo */
+    padding: 10px; /* Espaciado interno */
+    margin-bottom: 10px; /* Margen inferior */
+    border-radius: 5px; /* Bordes redondeados */
+    display: block; /* Cambiar a bloque */
+    width: 100%; /* Ancho del 100% */
+    font-family: Arial, sans-serif;
+    box-sizing: border-box; /* Incluir el borde y el padding en el ancho total */
+    border: 2px solid rgb(0, 140, 255); /* Borde negro */
+    padding: 10px; /* Espaciado interno */
+    animation: slideIn 0.5s ease forwards;
+}
