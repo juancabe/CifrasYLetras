@@ -20,7 +20,7 @@ body {
 
 /* Estilos para el título */
 h1 {
-    color: #333; /* Color del texto */
+    color: #333333f1; /* Color del texto */
     font-family: Arial, sans-serif; /* Familia de fuente */
 }
 
@@ -28,25 +28,25 @@ h1 {
 p {
     font-size: 16px; /* Tamaño del texto */
     margin-bottom: 20px; /* Margen inferior */
+    color: #333333f1; /* Color del texto */
+    font-family: Arial, sans-serif; /* Familia de fuente */
+    font-size: 17px; /* Tamaño del texto */
 }
 
-/* Estilos para el párrafo de instrucciones */
-#instrucciones {
-    font-size: 18px; /* Tamaño del texto */
-    font-weight: bold; /* Peso de la fuente */
-    font-family: Arial, sans-serif;
-}
+
 
 /* Estilos para el botón */
 button {
-    background-color: #0084ff; /* Color de fondo */
-    color: #000; /* Color del texto */
+    background-color: #0084ffc0; /* Color de fondo */
+    color: #000000c9; /* Color del texto */
     font-family: Arial, sans-serif;
     font-size: 15px;
     border: none; /* Sin borde */
     padding: 7px 17px; /* Espaciado interno */
     cursor: pointer; /* Cambio de cursor al pasar el ratón */
     border-radius: 9px; /* Bordes redondeados */
+    border: 2px solid rgba(0, 0, 0, 0.39); /* Borde negro */
+    margin: 10px auto; /* Centrar horizontalmente */
 }
 
 button:hover {
@@ -55,8 +55,9 @@ button:hover {
 
 /* Estilos para la caja de texto de entrada */
 input[type="text"] {
+    background-color: #ffffff8a; /* Color de fondo */
     padding: 10px; /* Espaciado interno */
-    border: 2px solid #ccc; /* Borde */
+    border: 2px solid #ccccccc7; /* Borde */
     border-radius: 5px; /* Bordes redondeados */
     font-size: 16px; /* Tamaño del texto */
     width: 200px; /* Ancho */
@@ -77,14 +78,14 @@ input[type="text"]:focus {
 }
 
 #resultados div {
-    background-color: #f4f4f4; /* Color de fondo */
+    background-color: #bfffb2; /* Color de fondo */
     padding: 10px; /* Espaciado interno */
     margin-bottom: 140px; /* Margen inferior */
     border-radius: 5px; /* Bordes redondeados */
     display: block; /* Cambiar a bloque */
     font-family: Arial, sans-serif;
     box-sizing: border-box+20; /* Incluir el borde y el padding en el ancho total */
-    border: 2px solid rgb(0, 140, 255); /* Borde negro */
+    border: 2px solid rgba(0, 140, 255, 0.466); /* Borde negro */
     animation: slideIn 0.5s ease forwards;
     width: fit-content; /* Ajustar el ancho al contenido */
     margin: 10px auto; /* Centrar horizontalmente */
