@@ -73,20 +73,24 @@ input[type="text"]:focus {
 #resultados {
     margin-top: 20px; /* Margen superior */
     text-align: center; /* Centrar texto */
+    margin-bottom: 20px; /* Margen inferior */
 }
 
-
-/* Estilos para los resultados */
 #resultados div {
     background-color: #f4f4f4; /* Color de fondo */
     padding: 10px; /* Espaciado interno */
-    margin-bottom: 10px; /* Margen inferior */
+    margin-bottom: 140px; /* Margen inferior */
     border-radius: 5px; /* Bordes redondeados */
     display: block; /* Cambiar a bloque */
-    width: 100%; /* Ancho del 100% */
     font-family: Arial, sans-serif;
-    box-sizing: border-box; /* Incluir el borde y el padding en el ancho total */
+    box-sizing: border-box+20; /* Incluir el borde y el padding en el ancho total */
     border: 2px solid rgb(0, 140, 255); /* Borde negro */
-    padding: 10px; /* Espaciado interno */
     animation: slideIn 0.5s ease forwards;
+    width: fit-content; /* Ajustar el ancho al contenido */
+    margin: 10px auto; /* Centrar horizontalmente */
 }
+
+
+
+
+
