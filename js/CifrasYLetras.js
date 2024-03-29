@@ -101,6 +101,7 @@ function buscarPalabrasEnConsola(letrasInput) {
             if (regex[regex.length - 3] < "4" && regex[regex.length - 4] === "{") {
                 // Si la longitud es menor que 4, pasar a la siguiente iteración sin buscar palabras
                 document.getElementById('buscarBtn').disabled = false;
+                document.getElementById('letrasInput').disabled = false;
                 return;
             }
 
