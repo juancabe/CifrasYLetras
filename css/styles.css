@@ -58,6 +58,50 @@ input[type="text"] {
     box-sizing: border-box; /* Incluir el borde y el padding en el ancho total */
 }
 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"]:focus {
+    outline: none; /* Elimina el contorno predeterminado */
+    border-bottom: 4px solid #000000ee;
+}
+input[type="number"] {
+    background-color: transparent; /* Color de fondo */
+    border: none; /* Borde */
+    border-bottom: 2px solid #00000081;
+    font-size: 25px; /* Tamaño del texto */
+    width: 70px; /* Ancho */
+    margin-top: 5px;
+    box-sizing: border-box; /* Incluir el borde y el padding en el ancho total */
+    appearance: textfield;
+    -moz-appearance: textfield;
+    text-align: center;
+}
+
+input[type="number"]::placeholder {
+    text-align: center;
+}
+
+
+
+
+input[type="numberIn"]::placeholder {
+    text-align: center;
+}
+input[type="numberIn"] {
+    background-color: #ffee0054; /* Color de fondo */
+    padding: 5px; /* Espaciado interno */
+    border: 2px solid #ccccccc7; /* Borde */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 22px; /* Tamaño del texto */
+    width: 200px; /* Ancho */
+    box-sizing: border-box; /* Incluir el borde y el padding en el ancho total */
+    text-align: center;
+}
+
 /* Estilos cuando se enfoca la caja de texto */
 input[type="text"]:focus {
     border-color: #007bff; /* Cambio de color del borde al enfocar */
@@ -69,6 +113,14 @@ input[type="text"]:focus {
     margin-top: 20px; /* Margen superior */
     text-align: center; /* Centrar texto */
     margin-bottom: 20px; /* Margen inferior */
+}
+
+#resultados-cifras {
+    margin-top: 20px; /* Margen superior */
+    text-align: center; /* Centrar texto */
+    margin-bottom: 20px; /* Margen inferior */
+    font-family: Arial, sans-serif;
+    font-size: 30px; /* Tamaño del texto */
 }
 
 #resultados div {
@@ -84,6 +136,8 @@ input[type="text"]:focus {
     width: fit-content; /* Ajustar el ancho al contenido */
     margin: 10px auto; /* Centrar horizontalmente */
 }
+
+
 
 
 

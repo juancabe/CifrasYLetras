@@ -1,3 +1,64 @@
+
+let resultadoCount = 0; // Variable global para el número de resultados
+
+document.getElementById('titulo-cifras').addEventListener('click', function() {
+    document.getElementById('letras').style.display = 'none';
+    document.getElementById('cifras').style.display = 'block';
+});
+
+document.getElementById('titulo-letras').addEventListener('click', function() {
+    document.getElementById('cifras').style.display = 'none';
+    document.getElementById('letras').style.display = 'block';
+});
+
+function findOpFromInput() {
+    let guess = document.getElementById('guessInput').value;
+    let nums = [
+        document.getElementById('num1').value,
+        document.getElementById('num2').value,
+        document.getElementById('num3').value,
+        document.getElementById('num4').value,
+        document.getElementById('num5').value,
+        document.getElementById('num6').value
+    ].map(Number);
+    let result = findOp(nums, guess);
+    let resultLines = result.split('\n');
+    let resultadosCifras = document.getElementById('resultados-cifras');
+    resultadosCifras.innerHTML = '';
+    for (let line of resultLines) {
+        let p = document.createElement('p');
+        p.textContent = line;
+        resultadosCifras.appendChild(p);
+    }
+}
+
+function mostrarPalabraEnConsola(palabra) {
+    // Mostrar la palabra dentro de un contenedor individual
+    let resultadoDiv = document.createElement('div');
+    resultadoDiv.textContent = palabra;
+    document.getElementById('resultados').appendChild(resultadoDiv);
+
+    // Incrementar el número de resultados y actualizar el placeholder
+    resultadoCount++;
+    document.getElementById('letrasInput').placeholder = `Resultados: ${resultadoCount}`;
+}
+
+function buscarPalabras() {
+    // Limpiar resultados anteriores
+    document.getElementById('resultados').innerHTML = '';
+    document.getElementById('buscarBtn').disabled = true;   
+
+    // Reiniciar el número de resultados y el placeholder
+    resultadoCount = 0;
+    document.getElementById('letrasInput').placeholder = `Resultados: 0`;
+    
+
+    let letrasInput = document.getElementById('letrasInput').value;
+    document.getElementById('letrasInput').value = "";
+    document.getElementById('letrasInput').disabled = true;
+    buscarPalabrasEnConsola(letrasInput);
+}
+
 // Función para generar todas las combinaciones de elementos de un array
 function combinations(arr, r) {
     const result = [];
