@@ -27,7 +27,7 @@ function findOpFromInput() {
     resultadosCifras.innerHTML = '';
     for (let line of resultLines) {
         let p = document.createElement('p');
-        p.textContent = line;
+        p.innerHTML = line;
         resultadosCifras.appendChild(p);
     }
 }

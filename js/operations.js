@@ -33,18 +33,44 @@ function findOp(nums, guess){
     ops.push([]);
   }
   let order = [];
-  let xd = findOpRec(deepCopyArray(nums), guess, ops, order);
+
+  let i = 0;
+  let flag = false;
+  let xd = null;
+  let toGuess =  Number(guess);
+  do{
+
+    if(flag){
+      if(i < 5){
+        i++;
+      } else{
+        i = i*2;
+      }
+    
+      flag = false;
+      toGuess = Number(guess) + i;
+    } else{
+      flag = true;
+      toGuess = Number(guess) - i;
+    }
+    console.log("Guessing: " + toGuess);
+    xd = findOpRec(deepCopyArray(nums), toGuess, ops, order);
+    if(xd == null){
+      console.log("No solution found for " + toGuess);
+    } else{
+      console.log("Solution found for " + toGuess);
+    }
+
+  } while(xd == null && i < 30);
+
   if(xd != null){
     order = xd[0];
     ops = xd[1];
-    return printOp(nums, guess, ops, order);
+    let text = printOp(nums, toGuess, ops, order);
+    text = text.replace(String(toGuess), '<u><strong>' + toGuess + '</strong></u>');
+    return text;
   } else{
-    console.log("Fuck");
-    if(findOp(nums, guess-1) != null){
-      return true;
-    } else{
-      findOp(nums, guess+1);
-    }
+    return "No se encontró solución"
   }
 }
 
@@ -102,10 +128,6 @@ function findOpRec(nums, guess, ops, order){
 
               let xd = findOpRec(nums, guess, ops, order);
               if(xd != null){
-                  // console.log("nums: " + nums);
-                  // console.log("guess: " + guess);
-                  // console.log("ops: " + ops);
-                  // console.log("order: " + order);
                   return xd;
               } else{
                   nums.length = 0;
@@ -132,8 +154,6 @@ function findOpRec(nums, guess, ops, order){
       ops.push([]);
       ops[ops.length-1] = [...saved_ops[ooo]];
   }
-  
-
   return null;
 }
 
