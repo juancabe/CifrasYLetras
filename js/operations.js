@@ -49,16 +49,18 @@ async function findOp(nums, guess, mostrarResultadoCifras){
     
       flag = false;
       toGuess = Number(guess) + i;
-    } else{
-      flag = true;
-      toGuess = Number(guess) - i;
-    }
-    mostrarResultadoCifras("Buscando solución para: <strong>" + toGuess + "</strong>");
-    await new Promise(resolve => setTimeout(resolve, 0));
-    xd = await findOpRec(deepCopyArray(nums), toGuess, ops, order);
-    if(xd == null){
-    } else{
-    }
+      } else{
+        flag = true;
+        toGuess = Number(guess) - i;
+      }
+      if(i != 0){
+        mostrarResultadoCifras("Buscando solución para: <strong>" + toGuess + "</strong>");
+      } else{
+        mostrarResultadoCifras("");
+      }
+      await new Promise(resolve => setTimeout(resolve, 0));
+      
+      xd = await findOpRec(deepCopyArray(nums), toGuess, ops, order);
 
   } while(xd == null && i < 30);
 

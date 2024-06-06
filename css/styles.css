@@ -9,7 +9,7 @@
 
 /* Estilos generales */
 body {
-    background-color: #a7e6ff; /* Cambia esto al color que prefieras */
+    background-color: #0b303f; /* Cambia esto al color que prefieras */
 }
 
 /* Estilos para el contenedor principal */
@@ -20,32 +20,32 @@ body {
 
 /* Estilos para el título */
 h1 {
-    color: #333333f1; /* Color del texto */
+    color: #fffffff1; /* Color del texto */
     font-family: Arial, sans-serif; /* Familia de fuente */
 }
 
 h2 {
-    color: #333333f1; /* Color del texto */
+    color: #fffffff1; /* Color del texto */
     font-family: Arial, sans-serif; /* Familia de fuente */
 }
 
 #shadow{
-    color: #3333336e; /* Color del texto */
+    color: #ffffff6e; /* Color del texto */
     font-size:mediumz;
 }
 
 
 /* Estilos para el botón */
 button {
-    background-color: #0084ffc0; /* Color de fondo */
-    color: #000000c9; /* Color del texto */
+    background-color: #4a5c6dc0; /* Color de fondo */
+    color: #ffffffc9; /* Color del texto */
     font-family: Arial, sans-serif;
     font-size: 15px;
     border: none; /* Sin borde */
     padding: 7px 17px; /* Espaciado interno */
     cursor: pointer; /* Cambio de cursor al pasar el ratón */
     border-radius: 9px; /* Bordes redondeados */
-    border: 2px solid rgba(0, 0, 0, 0.39); /* Borde negro */
+    border: 2px solid rgba(255, 255, 255, 0.39); /* Borde negro */
     margin: 10px auto; /* Centrar horizontalmente */
 }
 
@@ -54,14 +54,15 @@ button:disabled {
 }
 
 button:hover {
-    background-color: #0056b3; /* Color de fondo al pasar el ratón */
+    background-color: #2c353f; /* Color de fondo al pasar el ratón */
 }
 
 /* Estilos para la caja de texto de entrada */
 input[type="text"] {
-    background-color: #ffffff8a; /* Color de fondo */
+    background-color: #0000008a; /* Color de fondo */
     padding: 10px; /* Espaciado interno */
-    border: 2px solid #ccccccc7; /* Borde */
+    color:#ffffffde;
+    border: 2px solid #464646c7; /* Borde */
     border-radius: 5px; /* Bordes redondeados */
     font-size: 16px; /* Tamaño del texto */
     width: 200px; /* Ancho */
@@ -74,14 +75,12 @@ input[type="number"]::-webkit-outer-spin-button {
     margin: 0;
 }
 
-input[type="number"]:focus {
-    outline: none; /* Elimina el contorno predeterminado */
-    border-bottom: 4px solid #000000ee;
-}
+
 input[type="number"] {
     background-color: transparent; /* Color de fondo */
+    color:#ffffffde;
     border: none; /* Borde */
-    border-bottom: 2px solid #00000081;
+    border-bottom: 2px solid #ffffff81;
     font-size: 25px; /* Tamaño del texto */
     width: 70px; /* Ancho */
     margin-top: 5px;
@@ -96,15 +95,14 @@ input[type="number"]::placeholder {
 }
 
 
-
-
 input[type="numberIn"]::placeholder {
     text-align: center;
-}
+    }
 input[type="numberIn"] {
-    background-color: #ffee0054; /* Color de fondo */
+    color:#ffffffde;
+    background-color: #302d0054; /* Color de fondo */
     padding: 5px; /* Espaciado interno */
-    border: 2px solid #ccccccc7; /* Borde */
+    border: 2px solid #535353c7; /* Borde */
     border-radius: 5px; /* Bordes redondeados */
     font-size: 22px; /* Tamaño del texto */
     width: 200px; /* Ancho */
@@ -114,8 +112,16 @@ input[type="numberIn"] {
 
 /* Estilos cuando se enfoca la caja de texto */
 input[type="text"]:focus {
-    border-color: #007bff; /* Cambio de color del borde al enfocar */
+    border-color: #d6d6d6c2; /* Cambio de color del borde al enfocar */
     outline: none; /* Eliminar el contorno al enfocar */
+}
+input[type="number"]:focus {
+    border-color: #d6d6d6c2; /* Cambio de color del borde al enfocar */
+    outline: none; /* Elimina el contorno predeterminado */
+}
+input[type="numberIn"]:focus {
+    border-color: #d6d6d6c2; /* Cambio de color del borde al enfocar */
+    outline: none; /* Elimina el contorno predeterminado */
 }
 
 /* Estilos para el contenedor de resultados */
@@ -126,6 +132,7 @@ input[type="text"]:focus {
 }
 
 #resultados-cifras {
+    color:#ffffffdc;
     margin-top: 20px; /* Margen superior */
     text-align: center; /* Centrar texto */
     margin-bottom: 20px; /* Margen inferior */
@@ -134,14 +141,14 @@ input[type="text"]:focus {
 }
 
 #resultados div {
-    background-color: #bfffb2; /* Color de fondo */
+    background-color: #344630; /* Color de fondo */
     padding: 10px; /* Espaciado interno */
     margin-bottom: 140px; /* Margen inferior */
     border-radius: 5px; /* Bordes redondeados */
     display: block; /* Cambiar a bloque */
     font-family: Arial, sans-serif;
     box-sizing: border-box+20; /* Incluir el borde y el padding en el ancho total */
-    border: 2px solid rgba(0, 140, 255, 0.466); /* Borde negro */
+    border: 2px solid rgba(0, 42, 77, 0.466); /* Borde negro */
     animation: slideIn 0.5s ease forwards;
     width: fit-content; /* Ajustar el ancho al contenido */
     margin: 10px auto; /* Centrar horizontalmente */
