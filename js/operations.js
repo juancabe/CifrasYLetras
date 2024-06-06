@@ -67,7 +67,10 @@ function findOp(nums, guess){
     order = xd[0];
     ops = xd[1];
     let text = printOp(nums, toGuess, ops, order);
-    text = text.replace(String(toGuess), '<u><strong>' + toGuess + '</strong></u>');
+    let lastIndex = text.lastIndexOf(toGuess);
+    if (lastIndex !== -1) {
+        text = text.substring(0, lastIndex) + '<u><strong>' + toGuess + '</strong></u>' + text.substring(lastIndex + String('<u><strong>' + toGuess + '</strong></u>').length);
+    }
     return text;
   } else{
     return "No se encontró solución"
