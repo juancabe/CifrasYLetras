@@ -12,7 +12,12 @@
     <div class="container">
         <h1><span id="titulo-cifras" style="cursor:pointer;">Cifras</span> y <span id="titulo-letras" style="cursor:pointer;">Letras</span></h1>
 
-        <div id="letras" class="container">
+        <div id="inicio">
+            <h2>Elige una opción</h2>
+            <h2 id="shadow">(cifras) o (letras)</h2>
+        </div>
+
+        <div id="letras" class="container" style="display: none;">
             <div class="form-container">
                 <input type="text" id="letrasInput" placeholder="Introduce las letras">
                 <button id="buscarBtn" onclick="buscarPalabras()">Buscar Palabras</button>

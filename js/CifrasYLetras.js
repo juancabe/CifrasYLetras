@@ -1,14 +1,48 @@
 
 let resultadoCount = 0; // Variable global para el número de resultados
 
+function hideInicio(){
+    document.getElementById('inicio').style.display = 'none';
+}
+
+function uString(idOfHtmlElement, word){
+    let htmlElement = document.getElementById(idOfHtmlElement).innerHTML;
+    if(htmlElement.includes("<u>" + word + "</u>")){
+        return;
+    }
+    if(!htmlElement.includes(word)){
+        return;
+    }
+    let wordSplitten = htmlElement.split(word);
+    document.getElementById(idOfHtmlElement).innerHTML = wordSplitten[0] + "<u>" + word + "</u>" + wordSplitten[1];
+}
+
+function un_uString(idOfHtmlElement, word){
+    let htmlElement = document.getElementById(idOfHtmlElement).innerHTML;
+    if(!htmlElement.includes("<u>" + word + "</u>")){
+        return;
+    }
+    if(!htmlElement.includes(word)){
+        return;
+    }
+    let wordSplitten = htmlElement.split("<u>" + word + "</u>");
+    document.getElementById(idOfHtmlElement).innerHTML = wordSplitten[0] + word + wordSplitten[1];
+}
+
 document.getElementById('titulo-cifras').addEventListener('click', function() {
+    hideInicio();
     document.getElementById('letras').style.display = 'none';
     document.getElementById('cifras').style.display = 'block';
+    uString('titulo-cifras', 'Cifras');
+    un_uString('titulo-letras', 'Letras');
 });
 
 document.getElementById('titulo-letras').addEventListener('click', function() {
+    hideInicio();
     document.getElementById('cifras').style.display = 'none';
     document.getElementById('letras').style.display = 'block';
+    uString('titulo-letras', 'Letras');
+    un_uString('titulo-cifras', 'Cifras');
 });
 
 async function mostrarResultadoCifras(resultado){

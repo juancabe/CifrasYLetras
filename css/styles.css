@@ -24,6 +24,16 @@ h1 {
     font-family: Arial, sans-serif; /* Familia de fuente */
 }
 
+h2 {
+    color: #333333f1; /* Color del texto */
+    font-family: Arial, sans-serif; /* Familia de fuente */
+}
+
+#shadow{
+    color: #3333336e; /* Color del texto */
+    font-size:mediumz;
+}
+
 
 /* Estilos para el botón */
 button {
