@@ -142,6 +142,7 @@ input[type="numberIn"]:focus {
 
 #resultados div {
     background-color: #344630; /* Color de fondo */
+    color:rgba(255, 255, 255, 0.856);
     padding: 10px; /* Espaciado interno */
     margin-bottom: 140px; /* Margen inferior */
     border-radius: 5px; /* Bordes redondeados */
