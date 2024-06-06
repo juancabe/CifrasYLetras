@@ -27,7 +27,7 @@ function printOp(nums, guess, ops, order) {
   return operations;
 }
 
-function findOp(nums, guess){
+async function findOp(nums, guess, mostrarResultadoCifras){
   let ops = [];
   for(let i = 0; i < nums.length; i++){
     ops.push([]);
@@ -53,12 +53,11 @@ function findOp(nums, guess){
       flag = true;
       toGuess = Number(guess) - i;
     }
-    console.log("Guessing: " + toGuess);
-    xd = findOpRec(deepCopyArray(nums), toGuess, ops, order);
+    mostrarResultadoCifras("Buscando solución para: <strong>" + toGuess + "</strong>");
+    await new Promise(resolve => setTimeout(resolve, 0));
+    xd = await findOpRec(deepCopyArray(nums), toGuess, ops, order);
     if(xd == null){
-      console.log("No solution found for " + toGuess);
     } else{
-      console.log("Solution found for " + toGuess);
     }
 
   } while(xd == null && i < 30);
@@ -77,14 +76,14 @@ function findOp(nums, guess){
   }
 }
 
-function findOpRec(nums, guess, ops, order){
+async function findOpRec(nums, guess, ops, order){
 
   let saved_nums = deepCopyArray(nums);
   let saved_ops = deepCopyArray(ops);
   let saved_order = deepCopyArray(order); 
 
   if(nums.length < 1){
-      console.log("Error < 1");
+      return null;
   }
 
   if(nums.length == 1){
@@ -129,7 +128,7 @@ function findOpRec(nums, guess, ops, order){
               order.push(j);
               nums.splice(j, 1);
 
-              let xd = findOpRec(nums, guess, ops, order);
+              let xd = await findOpRec(nums, guess, ops, order);
               if(xd != null){
                   return xd;
               } else{

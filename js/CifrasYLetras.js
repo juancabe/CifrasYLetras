@@ -11,7 +11,20 @@ document.getElementById('titulo-letras').addEventListener('click', function() {
     document.getElementById('letras').style.display = 'block';
 });
 
-function findOpFromInput() {
+async function mostrarResultadoCifras(resultado){
+    resultadoLines = resultado.split('\n');
+    let resultadosCifras = document.getElementById('resultados-cifras');
+    resultadosCifras.innerHTML = '';
+    for(let line of resultadoLines){
+        let p = document.createElement('p');
+        p.innerHTML = line;
+        resultadosCifras.appendChild(p);
+    }
+    resultadosCifras = document.getElementById('resultados-cifras');
+}
+
+
+async function findOpFromInput() {
     let guess = document.getElementById('guessInput').value;
     let nums = [
         document.getElementById('num1').value,
@@ -21,15 +34,8 @@ function findOpFromInput() {
         document.getElementById('num5').value,
         document.getElementById('num6').value
     ].map(Number);
-    let result = findOp(nums, guess);
-    let resultLines = result.split('\n');
-    let resultadosCifras = document.getElementById('resultados-cifras');
-    resultadosCifras.innerHTML = '';
-    for (let line of resultLines) {
-        let p = document.createElement('p');
-        p.innerHTML = line;
-        resultadosCifras.appendChild(p);
-    }
+    let result = await findOp(nums, guess, mostrarResultadoCifras);
+    mostrarResultadoCifras(result);
 }
 
 function mostrarPalabraEnConsola(palabra) {
